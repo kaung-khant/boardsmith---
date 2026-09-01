@@ -1,9 +1,13 @@
+အောက်တွင် **boardsmith** အတွက် README ဖိုင်၏ မြန်မာဘာသာပြန်ကို တင်ပြထားပါသည်။ နည်းပညာဝေါဟာရများနှင့် ကုဒ်အမိန့်များကို မူရင်းအတိုင်း ထားရှိပြီး အကြောင်းအရာများကို မြန်မာလို သဘာဝကျကျ၊ ဖတ်ရှုရလွယ်ကူစေရန် ဘာသာပြန်ဆိုထားပါသည်။
+
+---
+
 <p align="center">
   <img src="assets/banner.svg" alt="boardsmith" width="700">
 </p>
 
 <p align="center">
-  Text prompt → KiCad schematic, BOM, and firmware. No templates — real wired circuits with computed values.
+  စာသားညွှန်ကြားချက် → KiCad ပုံကြမ်းပုံ၊ BOM နှင့် Firmware။ ပုံစံပလိတ်များ မပါဝင်ပါ — တွက်ချက်ထားသော တန်ဖိုးများဖြင့် အစစ်အမှန် ဝိုင်ယာကြိုးချိတ်ထားသော ဆားကစ်များ။
 </p>
 
 <p align="center">
@@ -15,19 +19,15 @@
   <img src="https://img.shields.io/badge/Works-offline-green.svg" alt="Works offline">
 </p>
 
-<!-- Post-launch badges (uncomment when available):
-[![PyPI version](https://img.shields.io/pypi/v/boardsmith.svg)](https://pypi.org/project/boardsmith/)
-[![PyPI downloads](https://img.shields.io/pypi/dm/boardsmith.svg)](https://pypi.org/project/boardsmith/)
-[![GitHub stars](https://img.shields.io/github/stars/ForestHubAI/boardsmith.svg?style=social)](https://github.com/ForestHubAI/boardsmith)
--->
+---
 
-## Quick Start
+## အမြန်စတင်ရန်
 
 ```bash
 pip install boardsmith
 ```
 
-Works on Mac, Windows, and Linux. Requires Python 3.10+.
+Mac၊ Windows နှင့် Linux တို့တွင် အလုပ်လုပ်ပါသည်။ Python 3.10 သို့မဟုတ် ထို့ထက်မြင့်မားသော ဗားရှင်း လိုအပ်ပါသည်။
 
 <p align="center">
   <img src="assets/terminal-demo.svg" alt="boardsmith terminal demo" width="700">
@@ -35,165 +35,165 @@ Works on Mac, Windows, and Linux. Requires Python 3.10+.
 
 ---
 
-[Why this exists](#why-this-exists) · [Install](#install) · [Examples](#examples) · [How it works](#how-it-works) · [Contributing](#contributing)
+[ဤကိရိယာ ဘာကြောင့် ရှိသလဲ](#ဤကိရိယာ-ဘာကြောင့်-ရှိသလဲ) · [တပ်ဆင်ခြင်း](#တပ်ဆင်ခြင်း) · [နမူနာများ](#နမူနာများ) · [အလုပ်လုပ်ပုံ](#အလုပ်လုပ်ပုံ) · [ပါဝင်ကူညီခြင်း](#ပါဝင်ကူညီခြင်း)
 
 ---
 
-## Why this exists
+## ဤကိရိယာ ဘာကြောင့် ရှိသလဲ
 
-Designing a circuit today means: open KiCad, manually place components, look up datasheets for every pull-up value, voltage divider, and decoupling cap. Miss one constraint and the board doesn't work. Every hobby project starts with hours of busywork before you write a single line of firmware.
+ယနေ့ခေတ်တွင် ဆားကစ်တစ်ခုကို ဒီဇိုင်းဆွဲသည်ဆိုသည်မှာ - KiCad ကိုဖွင့်ခြင်း၊ အစိတ်အပိုင်းများကို လက်ဖြင့် နေရာချခြင်း၊ pull-up တန်ဖိုး၊ voltage divider နှင့် decoupling capacitor တိုင်းအတွက် datasheet များကို ရှာဖွေခြင်းတို့ ပါဝင်သည်။ ကန့်သတ်ချက်တစ်ခုခု လွဲချော်သွားရင် ဘုတ်က အလုပ်မလုပ်တော့ပါ။ ဝါသနာအရ ပရောဂျက်တိုင်းသည် Firmware ကုဒ်တစ်ကြောင်းမရေးမီ နာရီပေါင်းများစွာ လုပ်စရာအခြေခံအလုပ်တွေနဲ့ စတင်ကြရသည်။
 
-LLMs changed what's possible — they can write code, generate configs, plan architectures. But hardware has physical constraints that hallucinations destroy. You can't "almost" get a voltage divider right. A wrong pull-up value means the I2C bus doesn't talk. A missing decoupling cap means random resets under load.
+LLMs (ဘာသာစကားပုံစံကြီးများ) က ဖြစ်နိုင်ချေရှိသော အရာများကို ပြောင်းလဲခဲ့သည် — ၎င်းတို့သည် ကုဒ်ရေးနိုင်သည်၊ ဖွဲ့စည်းပုံများ (configs) ထုတ်ပေးနိုင်သည်၊ ဗိသုကာများကို စီစဉ်နိုင်သည်။ သို့သော် ဟာ့ဒ်ဝဲတွင် ရုပ်ပိုင်းဆိုင်ရာ ကန့်သတ်ချက်များ ရှိပြီး စိတ်ကူးယဉ်အမှားများ (hallucinations) က ၎င်းတို့ကို ဖျက်ဆီးပစ်နိုင်သည်။ voltage divider ကို "အကြမ်းဖျင်း" မှန်အောင် လုပ်လို့ မရပါ။ pull-up တန်ဖိုး မှားသွားရင် I2C bus က အလုပ်မလုပ်တော့ပါ။ decoupling capacitor ပျောက်နေရင် load များချိန်တွင် ကျပန်း ပြန်လည်စတင်ခြင်း (random resets) ဖြစ်တတ်သည်။
 
-**boardsmith treats circuit design like compilation.** You describe what you want in plain English. A 9-stage synthesis pipeline with 11 constraint checks turns that into a real schematic — with every pull-up resistor, every decoupling cap, every I2C address calculated from datasheet specs. The LLM handles intent. The pipeline enforces physics.
+**boardsmith သည် ဆားကစ်ဒီဇိုင်းကို ကုဒ် Compile လုပ်ခြင်းကဲ့သို့ သဘောထားသည်။** သင်သည် မိမိလိုချင်သည်ကို ရိုးရိုးအင်္ဂလိပ်လို ဖော်ပြလိုက်ရုံပါ။ အဆင့် ၉ ဆင့်ပါ ပေါင်းစပ်ဖန်တီးမှု (synthesis) လုပ်ငန်းစဉ်နှင့် ကန့်သတ်ချက်စစ်ဆေးမှု ၁၁ မျိုးက ၎င်းကို တကယ့် ပုံကြမ်းပုံအဖြစ်သို့ ပြောင်းလဲပေးသည် — pull-up resistor တိုင်း၊ decoupling capacitor တိုင်း၊ I2C လိပ်စာတိုင်းကို datasheet သတ်မှတ်ချက်များမှ တွက်ချက်ပေးပါသည်။ LLM က ရည်ရွယ်ချက် (intent) ကို ကိုင်တွယ်ပြီး လုပ်ငန်းစဉ်က ရူပဗေဒစည်းမျဉ်းများကို ပြဌာန်းပေးသည်။
 
-The difference: boardsmith works offline (`--no-llm`). It produces real computed values, not templates. Open the output in KiCad — it's a wired schematic with correct nets, not a starting point you have to fix.
+ကွာခြားချက်မှာ - boardsmith သည် အင်တာနက်မပါဘဲ (`--no-llm`) အလုပ်လုပ်နိုင်သည်။ ၎င်းသည် တွက်ချက်ထားသော တန်ဖိုးအစစ်အမှန်များကို ထုတ်ပေးသည်၊ ပုံစံပလိတ်များ မဟုတ်ပါ။ KiCad တွင် ရလဒ်ကိုဖွင့်ကြည့်ပါ — ၎င်းသည် သင့်အတွက် သင်ပြင်ဆင်ရမည့် အစမှတ်တစ်ခုမဟုတ်ဘဲ မှန်ကန်သော nets များပါရှိသည့် ဝိုင်ယာကြိုးချိတ်ပြီးသား ပုံကြမ်းပုံတစ်ခု ဖြစ်နေပါလိမ့်မည်။
 
-## Install
+## တပ်ဆင်ခြင်း
 
 ```bash
 pip install boardsmith[llm]
-export ANTHROPIC_API_KEY=sk-ant-...   # or OPENAI_API_KEY
+export ANTHROPIC_API_KEY=sk-ant-...   # (သို့) OPENAI_API_KEY
 boardsmith build -p "ESP32 with BME280 temperature sensor"
 ```
 
-The agent asks one clarifying question (power source?), then iterates until the design passes all constraint checks.
+Agent က ရှင်းလင်းရန် မေးခွန်းတစ်ခု (ပါဝါအရင်းအမြစ်?) မေးပြီးနောက် ဒီဇိုင်းသည် ကန့်သတ်ချက်စစ်ဆေးမှုအားလုံးကို အောင်မြင်သည်အထိ ထပ်ခါထပ်ခါ လုပ်ဆောင်ပါသည်။
 
-No API key? Run offline with the built-in knowledge base:
+API သော့မရှိဘူးလား။ အတွင်းတည်ဆောက်ထားသော အသိပညာအခြေခံ (knowledge base) ဖြင့် အင်တာနက်မပါဘဲ လုပ်ဆောင်ပါ။
 
 ```bash
-# Offline/demo fallback — no API key required:
+# အင်တာနက်မပါ / သရုပ်ပြအသုံးပြုမှု — API သော့ မလိုအပ်ပါ:
 pip install boardsmith
 boardsmith build -p "ESP32 with BME280 temperature sensor" --no-llm
 ```
 
-Output lands in `./boardsmith-output/`.
+ရလဒ်များက `./boardsmith-output/` ဆိုသည့် ဖိုင်တွဲထဲတွင် ထွက်ရှိပါသည်။
 
-## What it does
+## ၎င်းက ဘာလုပ်ပေးသလဲ
 
-boardsmith takes a natural language description and produces four artifacts:
+boardsmith သည် သဘာဝဘာသာစကားဖြင့် ဖော်ပြချက်ကိုယူပြီး အောက်ပါ အထွက်လေးမျိုးကို ထုတ်ပေးသည်။
 
-**Schematic** (`schematic.kicad_sch`) — Opens directly in KiCad. Not a template — an actual wired schematic with computed pull-up resistors, decoupling caps, correct I2C addresses, and proper power nets.
+**ပုံကြမ်းပုံ (Schematic)** (`schematic.kicad_sch`) — KiCad တွင် တိုက်ရိုက်ဖွင့်နိုင်သည်။ ပုံစံပလိတ်မဟုတ်ပါ — တွက်ချက်ထားသော pull-up resistors၊ decoupling caps၊ မှန်ကန်သော I2C လိပ်စာများနှင့် သင့်လျော်သော ပါဝါ nets များပါရှိသည့် လက်တွေ့ပုံကြမ်းပုံ တစ်ခုဖြစ်သည်။
 
-**BOM** (`bom.json`) — Line items with manufacturer part numbers, quantities, and estimated cost. Every part comes from the verified knowledge base.
+**BOM (ပစ္စည်းစာရင်း)** (`bom.json`) — ထုတ်လုပ်သူအမှတ် (manufacturer part numbers)၊ အရေအတွက်နှင့် ခန့်မှန်းကုန်ကျစရိတ်တို့ပါသည့် ပစ္စည်းများ။ ပစ္စည်းတိုင်းသည် အတည်ပြုထားသော အသိပညာအခြေခံမှ လာပါသည်။
 
-**Firmware** (`firmware/main.cpp` + `hardware.h`) — Arduino or ESP-IDF ready. Pin definitions, init sequences, and peripheral setup generated from the schematic.
+**Firmware** (`firmware/main.cpp` + `hardware.h`) — Arduino သို့မဟုတ် ESP-IDF အတွက် အဆင်သင့်ဖြစ်နေပါပြီ။ ပုံကြမ်းပုံမှ ထုတ်ပေးလိုက်သော Pin သတ်မှတ်ချက်များ၊ init sequences များနှင့် peripheral setup များ ပါဝင်သည်။
 
-**Gerber** (`gerber/`) — JLCPCB-compatible manufacturing files. Board outline, copper layers, drill files. Upload directly to order PCBs.
+**Gerber** (`gerber/`) — JLCPCB နှင့် တွဲဖက်အသုံးပြုနိုင်သော ထုတ်လုပ်ရေးဖိုင်များ။ ဘုတ်ပုံကြမ်း (board outline)၊ ကြေးနီအလွှာများ (copper layers)၊ တူးဖော်ရေးဖိုင်များ (drill files) ပါဝင်သည်။ PCB များမှာယူရန် တိုက်ရိုက် အပ်လုဒ်လုပ်နိုင်ပါသည်။
 
-In v0.2, the LLM also closes the loop: `boardsmith build` automatically repairs ERC violations using a bounded agent loop, and `boardsmith modify` enables surgical patching of existing schematics.
+v0.2 တွင် LLM သည် သံသရာကိုလည်း ပိတ်ဆို့ပေးသည် (closes the loop) - `boardsmith build` သည် ကန့်သတ်ထားသော agent loop ကိုသုံးပြီး ERC ချိုးဖောက်မှုများကို အလိုအလျောက် ပြင်ဆင်ပေးပြီး `boardsmith modify` သည် ရှိပြီးသား ပုံကြမ်းပုံများကို ခွဲစိတ်ကုသခြင်း (surgical patching) ပြုလုပ်နိုင်စေပါသည်။
 
-## Examples
+## နမူနာများ
 
 ```bash
-# Weather station
+# မိုးလေဝသစခန်း
 boardsmith build -p "ESP32 with BME280 and SSD1306 OLED display" --no-llm
 
-# CO2 monitor with display
+# မျက်နှာပြင်ပါ CO2 မော်နီတာ
 boardsmith build -p "RP2040 CO2 monitor with SCD41 sensor and ST7789 TFT" \
   --target rp2040 --quality high
 
-# LoRa sensor node
+# LoRa အာရုံခံကိရိယာ node
 boardsmith build -p "ESP32 with SX1276 LoRa and BME280 for remote weather" --no-llm
 ```
 
-## Supported hardware
+## အသုံးပြုနိုင်သော ဟာ့ဒ်ဝဲများ
 
-| Target | Status | Notes |
+| ပစ်မှတ် (Target) | အခြေအနေ (Status) | မှတ်ချက် (Notes) |
 |--------|--------|-------|
-| ESP32 | **Stable** | ESP-IDF + Arduino, 50+ compatible components |
-| RP2040 | **Stable** | Pico SDK, I2C/SPI peripherals |
-| STM32 | Beta | STM32 HAL, subset of peripherals |
+| ESP32 | **တည်ငြိမ်အောင်မြင်ပြီး (Stable)** | ESP-IDF + Arduino၊ တွဲဖက်သုံးနိုင်သော အစိတ်အပိုင်း ၅၀ ကျော် |
+| RP2040 | **တည်ငြိမ်အောင်မြင်ပြီး (Stable)** | Pico SDK၊ I2C/SPI အပို အစိတ်အပိုင်းများ |
+| STM32 | စမ်းသပ်အဆင့် (Beta) | STM32 HAL၊ အပို အစိတ်အပိုင်း အစုအဝေး |
 
-212 verified components — sensors, displays, comms modules, MCUs, memory, and power. Each with electrical ratings, timing constraints, I2C addresses, and init sequences.
+အတည်ပြုထားသော အစိတ်အပိုင်း ၂၁၂ ခု — အာရုံခံကိရိယာများ၊ မျက်နှာပြင်များ၊ ဆက်သွယ်ရေး module များ၊ MCU များ၊ မှတ်ဉာဏ်နှင့် ပါဝါ အစိတ်အပိုင်းများ။ တစ်ခုချင်းစီတွင် လျှပ်စစ်အဆင့်သတ်မှတ်ချက်များ၊ အချိန်ကိုက်ကန့်သတ်ချက်များ၊ I2C လိပ်စာများနှင့် init sequences များ ပါရှိသည်။
 
 ```bash
-boardsmith list-components          # browse all 212
-boardsmith research BME280          # look up a specific part
+boardsmith list-components          # ၂၁၂ ခုလုံးကို ကြည့်ရှုရန်
+boardsmith research BME280          # တိကျသော အစိတ်အပိုင်းတစ်ခုကို ရှာဖွေရန်
 ```
 
-## How it works
+## အလုပ်လုပ်ပုံ
 
 <p align="center">
   <img src="assets/pipeline.svg" alt="9-stage synthesis pipeline" width="600">
 </p>
 
-The pipeline runs 11 constraint checks: voltage compatibility, I2C address conflicts, pin assignment, power budget, timing, decoupling, pull-up values, bus width, clock domains, current limits, and ERC validation.
+လုပ်ငန်းစဉ်သည် ကန့်သတ်ချက်စစ်ဆေးမှု ၁၁ မျိုးကို လုပ်ဆောင်သည် - ဗို့အားလိုက်ဖက်မှု၊ I2C လိပ်စာပဋိပက္ခများ၊ Pin သတ်မှတ်ချက်၊ ပါဝါဘတ်ဂျက်၊ အချိန်ကိုက်မှု၊ decoupling၊ pull-up တန်ဖိုးများ၊ bus အကျယ်၊ နာရီကြိမ်နှုန်းဒိုမိန်းများ၊ လက်ရှိကန့်သတ်ချက်များနှင့် ERC အတည်ပြုခြင်းတို့ ဖြစ်သည်။
 
-`--no-llm` runs the full pipeline deterministically — no API key, no network, same output every time. With an LLM, the system iterates and improves designs until confidence exceeds the quality threshold.
+`--no-llm` က လုပ်ငန်းစဉ်တစ်ခုလုံးကို သေချာကျကျ (deterministically) လုပ်ဆောင်သည် — API သော့မလို၊ ကွန်ရက်မလို၊ အချိန်တိုင်း တူညီသော ရလဒ်ကို ရရှိသည်။ LLM ဖြင့် စနစ်သည် ဒီဇိုင်းများကို ထပ်ခါထပ်ခါ တိုးတက်အောင် လုပ်ဆောင်ပြီး ယုံကြည်မှုအဆင့်သည် အရည်အသွေးသတ်မှတ်ချက်ကို ကျော်လွန်သည်အထိ ဆက်လက်လုပ်ဆောင်ပါသည်။
 
-The core data structure is [HIR (Hardware Intermediate Representation)](docs/architecture.md) — a typed schema that flows through every stage. It's the contract between the synthesis pipeline and the firmware compiler.
+အဓိက ဒေတာဖွဲ့စည်းပုံမှာ [HIR (Hardware Intermediate Representation)](docs/architecture.md) — အဆင့်တိုင်းမှတစ်ဆင့် စီးဆင်းသွားသော ရိုက်ထည့်ထားသည့် ပုံစံ (typed schema) တစ်ခုဖြစ်သည်။ ၎င်းသည် ပေါင်းစပ်ဖန်တီးမှု လုပ်ငန်းစဉ်နှင့် Firmware ကွန်ပျိုင်လာ (compiler) အကြား စာချုပ် (contract) ဖြစ်သည်။
 
 ## Agentic EDA (v0.2)
 
-Boardsmith v0.2 adds a closed-loop LLM-guided EDA layer on top of the v0.1 synthesis pipeline.
+Boardsmith v0.2 သည် v0.1 ၏ ပေါင်းစပ်ဖန်တီးမှု လုပ်ငန်းစဉ်အပေါ်တွင် အပိတ်ကွင်းဆက် (closed-loop) LLM-လမ်းညွှန်ထားသော EDA အလွှာတစ်ခုကို ထည့်သွင်းပေးထားပါသည်။
 
-### ERCAgent — Automatic ERC Repair
+### ERCAgent — ERC အလိုအလျောက် ပြုပြင်ခြင်း
 
-After schematic generation, `boardsmith build` automatically invokes the ERCAgent if LLM credentials are available. The agent:
+ပုံကြမ်းပုံ ထုတ်လုပ်ပြီးနောက်၊ LLM အထောက်အထားများ ရှိပါက `boardsmith build` သည် ERCAgent ကို အလိုအလျောက် ခေါ်ယူပါသည်။ Agent သည် -
 
-- Reads real KiCad ERC output via `RunERCTool`
-- Asks the LLM to reason about each violation
-- Applies surgical patches via `WriteSchematicPatchTool` (ADD/MODIFY only — no destructive deletes)
-- Repeats up to 5 iterations with stall detection (same violations twice = stop)
-- Reports remaining violations in plain English if the cap is hit
+- `RunERCTool` မှတစ်ဆင့် တကယ့် KiCad ERC အထွက်ကို ဖတ်ရှုသည်။
+- ချိုးဖောက်မှုတစ်ခုစီအကြောင်း ဆင်ခြင်ရန် LLM ကို တောင်းဆိုသည်။
+- `WriteSchematicPatchTool` မှတစ်ဆင့် ခွဲစိတ်ကုသမှုပုံစံ (surgical patches) ကို အသုံးပြုသည် (ဖျက်ဆီးခြင်းမရှိဘဲ ADD/MODIFY သာ)။
+- ထပ်ခါတလဲလဲ အတူတူချိုးဖောက်မှုများတွေ့ရှိပါက ရပ်တန့်ပြီး အကြိမ် ၅ ကြိမ်အထိ ထပ်လုပ်ဆောင်သည်။
+- ကန့်သတ်ချက်ကို ရောက်ရှိပါက ကျန်ရှိနေသော ချိုးဖောက်မှုများကို ရိုးရိုးအင်္ဂလိပ်လို အစီရင်ခံပေးသည်။
 
-Control the iteration cap: `boardsmith build --max-erc-iterations 3`
+ထပ်လုပ်ဆောင်မှု အကြိမ်အရေအတွက်ကို ထိန်းချုပ်ရန် - `boardsmith build --max-erc-iterations 3`
 
-### boardsmith modify — Brownfield Schematic Patching
+### boardsmith modify — ရှိပြီးသား ပုံကြမ်းပုံကို ပြင်ဆင်မွမ်းမံခြင်း (Brownfield Patching)
 
-Patch an existing KiCad schematic without touching the B1–B9 pipeline:
+ရှိပြီးသား KiCad ပုံကြမ်းပုံကို B1–B9 လုပ်ငန်းစဉ်ကို ထိခိုက်ခြင်းမရှိဘဲ ပြင်ဆင်ပါ။
 
 ```bash
 boardsmith modify existing.kicad_sch "add battery management with TP4056"
 ```
 
-Flow:
-1. LLM reads the schematic and generates a structured modification plan
-2. Plan is displayed — you confirm (or pass `--yes` to skip)
-3. Patches are applied; ERCAgent validates post-patch
-4. A timestamped `.bak` backup is created before any write
+လုပ်ဆောင်ပုံ -
+1. LLM က ပုံကြမ်းပုံကိုဖတ်ပြီး ဖွဲ့စည်းတည်ဆောက်ထားသော မွမ်းမံရေးအစီအစဉ် (structured modification plan) ကို ထုတ်ပေးသည်။
+2. အစီအစဉ်ကို ပြသပေးသည် — သင်က အတည်ပြုရန် (သို့) `--yes` ကိုသုံးပြီး ကျော်သွားနိုင်သည်။
+3. ပြင်ဆင်ချက်များကို အသုံးပြုပြီး ERCAgent က ပြင်ဆင်ပြီးနောက် အတည်ပြုပေးသည်။
+4. မည်သည့်အရေးအသားမပြုလုပ်မီ အချိန်တံဆိပ်ပါ `.bak` အရန်ကူးဖိုင် (backup) ကို ဖန်တီးပေးသည်။
 
-> **Note:** `boardsmith modify` does not update the HIR. Run `boardsmith build --from-schematic` to re-sync.
+> **မှတ်ချက်:** `boardsmith modify` သည် HIR ကို အပ်ဒိတ်မလုပ်ပါ။ ပြန်လည်ထပ်တူပြုရန် `boardsmith build --from-schematic` ကို သုံးပါ။
 
-### boardsmith verify — Semantic Design Verification
+### boardsmith verify — ဆီမီးနစ် ဒီဇိုင်း အတည်ပြုခြင်း (Semantic Design Verification)
 
-Check a schematic's design intent against the HIR:
+ဒီဇိုင်း၏ ရည်ရွယ်ချက်ကို HIR နှင့် နှိုင်းယှဉ်စစ်ဆေးပါ။
 
 ```bash
 boardsmith verify path/to/design.kicad_sch --hir path/to/design.hir.json
 ```
 
-Runs the SemanticVerificationAgent — 6 rule-based tools followed by an LLM-guided fix loop:
+SemanticVerificationAgent ကို လုပ်ဆောင်သည် — စည်းမျဉ်းအခြေပြု ကိရိယာ ၆ ခု နှင့် ၎င်းနောက်တွင် LLM-လမ်းညွှန်ထားသော ပြုပြင်ရေးကွင်းဆက် (fix loop) ကို လုပ်ဆောင်သည်။
 
-| Tool | What it checks |
+| ကိရိယာ (Tool) | စစ်ဆေးသည့်အချက် (What it checks) |
 |------|----------------|
-| VerifyConnectivityTool | All HIR buses have matching schematic nets |
-| VerifyBootabilityTool | Boot pins, reset circuits, oscillator config |
-| VerifyPowerTool | Power rails, decoupling, voltage domains |
-| VerifyComponentsTool | All HIR components present with correct roles |
-| VerifyBomTool | BOM CSV matches HIR component list |
-| VerifyPcbBasicTool | All schematic refs present in PCB layout |
+| VerifyConnectivityTool | HIR bus များအားလုံးတွင် ကိုက်ညီသော ပုံကြမ်းပုံ nets များရှိမရှိ |
+| VerifyBootabilityTool | Boot pins၊ reset circuits၊ oscillator config များ |
+| VerifyPowerTool | ပါဝါလိုင်းများ၊ decoupling၊ ဗို့အားဒိုမိန်းများ |
+| VerifyComponentsTool | HIR အစိတ်အပိုင်းများအားလုံးတွင် မှန်ကန်သော အခန်းကဏ္ဍများဖြင့် ပါဝင်မှုရှိမရှိ |
+| VerifyBomTool | BOM CSV သည် HIR အစိတ်အပိုင်းစာရင်းနှင့် ကိုက်ညီမှုရှိမရှိ |
+| VerifyPcbBasicTool | ပုံကြမ်းပုံရှိ refs များအားလုံးသည် PCB အပြင်အဆင်တွင် ပါဝင်မှုရှိမရှိ |
 
-Requires `pip install boardsmith[llm]`. No `--no-llm` fallback (rule-based checks are free; LLM fixes require a key).
+`pip install boardsmith[llm]` လိုအပ်ပါသည်။ `--no-llm` အစားထိုးမှု မရှိပါ (စည်းမျဉ်းအခြေပြု စစ်ဆေးမှုများမှာ အခမဲ့ဖြစ်ပြီး LLM ပြုပြင်မှုများအတွက် သော့တစ်ခု လိုအပ်သည်)။
 
-## Contributing
+## ပါဝင်ကူညီခြင်း
 
-The fastest way to contribute: **add a component to the knowledge base**. It's a Python TypedDict with electrical specs from the datasheet. Takes about 20 minutes. Every new component immediately makes boardsmith more useful for everyone who needs that part.
+ပါဝင်ကူညီရန် အလျင်မြန်ဆုံးနည်းလမ်းမှာ — **အသိပညာအခြေခံ (knowledge base) တွင် အစိတ်အပိုင်း (component) တစ်ခုကို ထည့်သွင်းခြင်း** ဖြစ်သည်။ ၎င်းသည် datasheet မှ လျှပ်စစ်သတ်မှတ်ချက်များပါရှိသော Python TypedDict တစ်ခုဖြစ်သည်။ အချိန် ၂၀ မိနစ်ခန့် ကြာတတ်သည်။ အစိတ်အပိုင်းအသစ်တိုင်းသည် ထိုပစ္စည်းကိုလိုအပ်သူတိုင်းအတွက် boardsmith ကို ချက်ချင်းပိုမိုအသုံးဝင်စေပါသည်။
 
 ```bash
-# 1. Add your component to shared/knowledge/seed/sensor.py (or display.py, etc.)
-# 2. Smoke test
+# 1. သင်၏ အစိတ်အပိုင်းကို shared/knowledge/seed/sensor.py (သို့) display.py (စသဖြင့်) တွင် ထည့်ပါ။
+# 2. Smoke test (အခြေခံစမ်းသပ်ခြင်း)
 boardsmith build -p "ESP32 with <your-component>" --no-llm --no-pcb
-# 3. Run tests
+# 3. စမ်းသပ်မှုများ လုပ်ဆောင်ပါ
 pytest
-# 4. Open a PR
+# 4. PR (Pull Request) တစ်ခု ဖွင့်ပါ။
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide, component schema, and other ways to help.
+အပြည့်အစုံလမ်းညွှန်၊ အစိတ်အပိုင်း ပုံစံ (schema) နှင့် အခြားကူညီနိုင်သည့် နည်းလမ်းများအတွက် [CONTRIBUTING.md](CONTRIBUTING.md) ကို ကြည့်ပါ။
 
-## License
+## လိုင်စင်
 
-[AGPL-3.0](LICENSE) — use it, modify it, ship improvements back.
+[AGPL-3.0](LICENSE) — သုံးပါ၊ ပြင်ဆင်ပါ၊ တိုးတက်မှုများကို ပြန်လည်ပေးပို့ပါ။
 
-Commercial license available for closed-source integration. Contact root@foresthub.ai.
+ပိတ်ထားသော ရင်းမြစ် (closed-source) ပေါင်းစပ်မှုအတွက် စီးပွားဖြစ်လိုင်စင် ရရှိနိုင်ပါသည်။ ဆက်သွယ်ရန် - root@foresthub.ai။
